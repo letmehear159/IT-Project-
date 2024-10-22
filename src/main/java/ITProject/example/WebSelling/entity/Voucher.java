@@ -1,4 +1,4 @@
-package ITProject.example.WebSelling.model;
+package ITProject.example.WebSelling.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

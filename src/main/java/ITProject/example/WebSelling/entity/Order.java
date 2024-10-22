@@ -1,11 +1,10 @@
-package ITProject.example.WebSelling.model;
+package ITProject.example.WebSelling.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @NoArgsConstructor

@@ -1,4 +1,4 @@
-package ITProject.example.WebSelling.model;
+package ITProject.example.WebSelling.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;

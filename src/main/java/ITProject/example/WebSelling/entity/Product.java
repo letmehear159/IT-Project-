@@ -1,4 +1,4 @@
-package ITProject.example.WebSelling.model;
+package ITProject.example.WebSelling.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,7 +13,7 @@ import lombok.experimental.FieldDefaults;
 @Table(name = "products")
 public class Product extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
     Long productId;
 

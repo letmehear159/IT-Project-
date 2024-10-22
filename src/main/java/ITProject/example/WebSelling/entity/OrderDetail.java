@@ -1,4 +1,4 @@
-package ITProject.example.WebSelling.model;
+package ITProject.example.WebSelling.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -19,7 +19,7 @@ public class OrderDetail {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id")
-    Product productId;
+    Product product;
 
     float price;
 

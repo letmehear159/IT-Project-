@@ -1,4 +1,4 @@
-package ITProject.example.WebSelling.model;
+package ITProject.example.WebSelling.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,16 +10,16 @@ import lombok.experimental.FieldDefaults;
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-@Table(name = "categories")
-public class Category {
+@Table(name = "manufacturers")
+public class Manufacturer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "category_id")
-    Long categoryId;
+    @Column(name = "manufacturer_id")
+    Long manufacturerId;
 
-    @Column(name = "category_name")
-    String categoryName;
+    @Column(name = "manufacturer_name")
+    String manufacturerName;
 
     @Column(name = "description")
-    String categoryDescription;
+    String manufacturerDescription;
 }
