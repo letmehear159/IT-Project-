@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -29,5 +31,12 @@ public class Product extends BaseEntity {
     @JoinColumn(name = "manufacturer_id")
     Manufacturer manufacturer;
 
-    String image;
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id")
+    List<ProductImage> productImages;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
+    List<Specification> specifications;
+
 }

@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -46,8 +47,35 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User update(UserRequest userRequest) {
-        return null;
+    public UserResponse update(UserRequest userRequest, Long userId) {
+        User existingUser = userRepository.findById(userId).orElseThrow(RuntimeException::new);
+
+        userMapper.updateUserFromDto(userRequest, existingUser);
+
+        existingUser.setPassword(passwordEncoder.encode(userRequest.getPassword()));
+
+        return userMapper.toUserResponse(userRepository.save(existingUser));
+    }
+
+    @Override
+    public UserResponse getUserById(Long userId) {
+        return userMapper.toUserResponse(userRepository.findById(userId).orElseThrow(RuntimeException::new));
+    }
+
+    @Override
+    public void delete(Long userId) {
+        userRepository.deleteById(userId);
+    }
+
+    @Override
+    public List<UserResponse> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        return users.stream().map(userMapper::toUserResponse).toList();
+    }
+
+    @Override
+    public UserResponse findUserByUsername(String username) {
+        return userMapper.toUserResponse(userRepository.findByUsername(username).orElseThrow(RuntimeException::new));
     }
 
 

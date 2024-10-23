@@ -26,7 +26,7 @@ public class UserResponse extends BaseResponse {
 
     String phone;
 
-    @JsonProperty("Date Of Birth")
+    @JsonProperty("date_of_birth")
     LocalDate dob;
 
     List<Role> roles;

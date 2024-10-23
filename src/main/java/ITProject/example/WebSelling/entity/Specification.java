@@ -4,22 +4,25 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor()
+@AllArgsConstructor()
 @Data
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-@Table(name = "product_images")
-public class ProductImage {
+@Table(name = "specifications")
+public class Specification {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    Long productImageId;
+    @Column(name = "spec_id")
+    Long specId;
 
+    @Column(name = "spec_key")
+    String specKey;
 
-    @Column(name = "image_url")
-    String imageUrl;
+    @Column(name = "spec_value")
+    String specValue;
 
 
 }
