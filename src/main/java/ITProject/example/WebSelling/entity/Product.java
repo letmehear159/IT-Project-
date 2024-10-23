@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -35,8 +37,11 @@ public class Product extends BaseEntity {
     @JoinColumn(name = "product_id")
     List<ProductImage> productImages;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
-    List<Specification> specifications;
+    @ElementCollection
+    @CollectionTable(name = "specifications", joinColumns = @JoinColumn(name = "product_id"))
+    @MapKeyColumn(name = "spec_key")
+    @Column(name = "spec_value")
+    private Map<String, String> specifications = new HashMap<>();
+
 
 }
