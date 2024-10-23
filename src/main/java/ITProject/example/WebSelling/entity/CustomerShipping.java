@@ -14,7 +14,7 @@ import lombok.experimental.FieldDefaults;
 public class CustomerShipping {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @Column(name = "receiver_name")

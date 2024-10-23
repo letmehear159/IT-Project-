@@ -13,7 +13,7 @@ import lombok.experimental.FieldDefaults;
 @Table(name = "manufacturers")
 public class Manufacturer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "manufacturer_id")
     Long manufacturerId;
 

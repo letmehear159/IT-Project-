@@ -13,7 +13,7 @@ import lombok.experimental.FieldDefaults;
 @Table(name = "vouchers")
 public class Voucher {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "voucher_id")
     Long voucherId;
 

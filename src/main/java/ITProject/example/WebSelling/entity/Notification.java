@@ -14,7 +14,7 @@ import lombok.experimental.FieldDefaults;
 public class Notification {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "notification_id")
     Long notificationId;
 
