@@ -40,10 +40,10 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
-    public Category updateCategory(CategoryRequest categoryRequest, String name) {
+    public Category updateCategory(CategoryRequest categoryRequest, Long Id) {
         Category category = categoryRepository
-                .findByCategoryName(name)
-                .orElseThrow(() -> new AppException(ErrorCode.INVALID_NAME));
+                .findById(Id)
+                .orElseThrow(() -> new AppException(ErrorCode.INVALID_ID));
 
         categoryMapper.updateCategoryFromDTO(categoryRequest, category);
 

@@ -12,7 +12,7 @@ public interface IManufacturerService {
 
     List<Manufacturer> getAllManufacturers();
 
-    Manufacturer updateManufacturer(ManufacturerRequest manufacturerRequest, String name);
+    Manufacturer updateManufacturer(ManufacturerRequest manufacturerRequest, Long Id);
 
     void deleteManufacturer(Long id);
 

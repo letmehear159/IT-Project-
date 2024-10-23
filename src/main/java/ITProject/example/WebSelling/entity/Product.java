@@ -33,8 +33,7 @@ public class Product extends BaseEntity {
     @JoinColumn(name = "manufacturer_id")
     Manufacturer manufacturer;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "product_id")
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
     List<ProductImage> productImages;
 
     @ElementCollection
@@ -42,6 +41,13 @@ public class Product extends BaseEntity {
     @MapKeyColumn(name = "spec_key")
     @Column(name = "spec_value")
     private Map<String, String> specifications = new HashMap<>();
+
+    @Column(name = "state")
+    Integer status = 1;
+
+    String description;
+
+    String thumbnail;
 
 
 }

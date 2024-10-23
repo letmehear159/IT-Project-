@@ -20,6 +20,9 @@ public enum ErrorCode {
     VALUE_NOT_FOUND(1012, "Value does not exist", HttpStatus.NOT_FOUND),
     INVALID_NAME(1013, "Name is invalid", HttpStatus.BAD_REQUEST),
     INVALID_ID(1014, "Id is invalid", HttpStatus.BAD_REQUEST),
+    EXCEED_MAXIMUM_ALLOW_NUMBER(1015,"File images are more than 5 to saved in database", HttpStatus.BAD_REQUEST),
+    FILE_IMAGE_TOO_LARGE(1016, "File image is too large", HttpStatus.PAYLOAD_TOO_LARGE),
+    UPLOAD_IMAGE_MUST_BE_IMAGE_TYPE(1017, "File type must be image type", HttpStatus.UNSUPPORTED_MEDIA_TYPE),
     ;
 
     private int code;

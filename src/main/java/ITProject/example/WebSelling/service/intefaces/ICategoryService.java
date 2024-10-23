@@ -14,7 +14,7 @@ public interface ICategoryService {
 
     List<Category> getAllCategories();
 
-    Category updateCategory(CategoryRequest categoryRequest, String name);
+    Category updateCategory(CategoryRequest categoryRequest, Long Id);
 
     void deleteCategory(Long id);
 

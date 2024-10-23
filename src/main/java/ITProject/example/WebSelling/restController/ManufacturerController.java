@@ -30,14 +30,14 @@ public class ManufacturerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getManufacturerById(@PathVariable int id) {
-        return ResponseEntity.ok().body(new Manufacturer());
+    public ResponseEntity<?> getManufacturerById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(manufacturerService.getManufacturerById(id));
     }
 
-    @PutMapping("/manufacturer/{name}")
-    public ResponseEntity<Manufacturer> updateManufacturer(@PathVariable String name,
+    @PutMapping("/{id}")
+    public ResponseEntity<Manufacturer> updateManufacturer(@PathVariable Long id,
                                                            @RequestBody ManufacturerRequest manufacturerRequest) {
-        return ResponseEntity.ok(manufacturerService.updateManufacturer(manufacturerRequest, name));
+        return ResponseEntity.ok(manufacturerService.updateManufacturer(manufacturerRequest, id));
 
     }
 

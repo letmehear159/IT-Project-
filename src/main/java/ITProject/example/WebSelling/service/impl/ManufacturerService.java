@@ -40,10 +40,10 @@ public class ManufacturerService implements IManufacturerService {
     }
 
     @Override
-    public Manufacturer updateManufacturer(ManufacturerRequest manufacturerRequest, String name) {
+    public Manufacturer updateManufacturer(ManufacturerRequest manufacturerRequest, Long Id) {
         Manufacturer manufacturer = manufacturerRepository
-                .findByManufacturerName(name)
-                .orElseThrow(() -> new AppException(ErrorCode.INVALID_NAME));
+                .findById(Id)
+                .orElseThrow(() -> new AppException(ErrorCode.INVALID_ID));
 
         manufacturerMapper.updateManufacturerFromDto(manufacturerRequest, manufacturer);
 

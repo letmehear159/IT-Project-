@@ -12,6 +12,7 @@ import lombok.experimental.FieldDefaults;
 @Entity
 @Table(name = "product_images")
 public class ProductImage {
+    public static final int MAXIMUM_IMAGES_PER_PRODUCT = 5;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -20,6 +21,10 @@ public class ProductImage {
 
     @Column(name = "image_url")
     String imageUrl;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    Product product;
 
 
 }
