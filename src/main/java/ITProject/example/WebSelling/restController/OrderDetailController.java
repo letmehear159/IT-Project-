@@ -4,6 +4,7 @@ import ITProject.example.WebSelling.dto.request.OrderDetailRequest;
 import ITProject.example.WebSelling.dto.response.OrderDetailResponse;
 import ITProject.example.WebSelling.entity.OrderDetail;
 import ITProject.example.WebSelling.service.impl.OrderDetailService;
+import ITProject.example.WebSelling.service.intefaces.IOrderDetailService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -17,7 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class OrderDetailController {
-    OrderDetailService orderDetailService;
+    IOrderDetailService orderDetailService;
 
     @GetMapping("/")
     public ResponseEntity<List<OrderDetailResponse>> getOrderDetails() {
