@@ -1,5 +1,6 @@
 package ITProject.example.WebSelling.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -24,7 +25,16 @@ public class ProductImage {
 
     @ManyToOne
     @JoinColumn(name = "product_id")
+    @JsonBackReference
     Product product;
 
+    @Override
+    public String toString() {
+        return "ProductImage{" +
+                "productImageId=" + productImageId +
+                ", productId=" + product.getProductId() +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
+    }
 
 }
