@@ -60,8 +60,7 @@ public class User extends BaseEntity {
     )
     List<Role> roles;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    ShoppingCart shoppingCart;
+
+
 
 }
