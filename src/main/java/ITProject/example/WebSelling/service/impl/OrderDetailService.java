@@ -3,12 +3,14 @@ package ITProject.example.WebSelling.service.impl;
 import ITProject.example.WebSelling.dto.request.OrderDetailRequest;
 import ITProject.example.WebSelling.dto.response.OrderDetailResponse;
 import ITProject.example.WebSelling.entity.OrderDetail;
+import ITProject.example.WebSelling.entity.Voucher;
 import ITProject.example.WebSelling.exceptionHandler.AppException;
 import ITProject.example.WebSelling.exceptionHandler.ErrorCode;
 import ITProject.example.WebSelling.mapper.OrderDetailMapper;
 import ITProject.example.WebSelling.repository.OrderDetailRepository;
 import ITProject.example.WebSelling.repository.ProductRepository;
 import ITProject.example.WebSelling.repository.ShoppingCartRepository;
+import ITProject.example.WebSelling.repository.VoucherRepository;
 import ITProject.example.WebSelling.service.intefaces.IOrderDetailService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +30,8 @@ public class OrderDetailService implements IOrderDetailService {
     ProductRepository productRepository;
 
     ShoppingCartRepository shoppingCartRepository;
+
+    VoucherRepository voucherRepository;
 
 
     @Override
@@ -50,7 +54,20 @@ public class OrderDetailService implements IOrderDetailService {
         orderDetail.setShoppingCart(shoppingCartRepository.findById(orderDetailRequest.getCartId()).orElseThrow(() ->
                 new AppException(ErrorCode.INVALID_SHOPPINGCART_ID)));
 
+        //1 voucher chỉ áp dụng cho 1 sản phẩm, nếu sản phẩm đó từ 2 trở đi thì giá như cũ.
+//        if (orderDetailRequest.getVoucherId().describeConstable().isPresent()) {
+//
+//            Voucher voucher = voucherRepository.findById(orderDetailRequest.getVoucherId()).get();
+//
+//            float percentage = voucher.getPercentage();
+//
+//            orderDetail.setTotalPrice(orderDetail.getPrice() * (100 - percentage) / 100);
+//
+//        } else {
+
         orderDetail.setTotalPrice(orderDetailRequest.getPrice());
+
+//        }
 
         return orderDetailMapper.toOrderDetailResponse(orderDetailRepository.save(orderDetail));
 
@@ -59,6 +76,7 @@ public class OrderDetailService implements IOrderDetailService {
     @Override
     public OrderDetailResponse updateOrderDetail(OrderDetailRequest orderDetailRequest, Long orderDetailId) {
         if (orderDetailRequest.getQuantity() <= 0) {
+            //Để ý đoạn này, đoạn này chưa hoàn thiện
             deleteOrderDetail(orderDetailId);
         }
 
@@ -66,6 +84,8 @@ public class OrderDetailService implements IOrderDetailService {
                 new AppException(ErrorCode.INVALID_ID));
 
         //Update số lượng
+        //Voucher nên để xử lý ở javascript. Sau khi nhập voucher xác nhận order hàng thì mới bắt đầu gửi lại
+        //request update orderDetail.
         orderDetailMapper.updateOrderDetailFromDTO(orderDetailRequest, orderDetail);
 
         orderDetail.setTotalPrice(orderDetail.getPrice() * orderDetail.getQuantity());
@@ -73,6 +93,9 @@ public class OrderDetailService implements IOrderDetailService {
         return orderDetailMapper.toOrderDetailResponse(orderDetailRepository.save(orderDetail));
 
     }
+
+
+
 
     @Override
     public void deleteOrderDetail(Long orderDetailId) {
