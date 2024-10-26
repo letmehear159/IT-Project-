@@ -6,6 +6,7 @@ import ITProject.example.WebSelling.entity.Category;
 import ITProject.example.WebSelling.entity.Manufacturer;
 import ITProject.example.WebSelling.service.impl.CategoryService;
 import ITProject.example.WebSelling.service.impl.ManufacturerService;
+import ITProject.example.WebSelling.service.intefaces.ICategoryService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -20,7 +21,7 @@ import java.util.List;
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class CategoryController {
 
-    CategoryService categoryService;
+    ICategoryService categoryService;
 
     @PostMapping("/")
     public ResponseEntity<Category> addCategory(@RequestBody CategoryRequest categoryRequest) {
