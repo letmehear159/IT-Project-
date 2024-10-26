@@ -33,8 +33,6 @@ public class Product extends BaseEntity {
     @JoinColumn(name = "manufacturer_id")
     Manufacturer manufacturer;
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
-    List<ProductImage> productImages;
 
     @ElementCollection
     @CollectionTable(name = "specifications", joinColumns = @JoinColumn(name = "product_id"))
