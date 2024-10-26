@@ -1,6 +1,7 @@
 package ITProject.example.WebSelling.service.impl;
 
 import ITProject.example.WebSelling.dto.request.OrderDetailRequest;
+import ITProject.example.WebSelling.dto.response.OrderDetailResponse;
 import ITProject.example.WebSelling.entity.OrderDetail;
 import ITProject.example.WebSelling.exceptionHandler.AppException;
 import ITProject.example.WebSelling.exceptionHandler.ErrorCode;
@@ -30,13 +31,14 @@ public class OrderDetailService implements IOrderDetailService {
 
 
     @Override
-    public OrderDetail getOrderDetail(Long orderDetailId) {
-        return orderDetailRepository.findById(orderDetailId).orElseThrow(() ->
-                new AppException(ErrorCode.INVALID_ID));
+    public OrderDetailResponse getOrderDetail(Long orderDetailId) {
+        return orderDetailMapper.toOrderDetailResponse(orderDetailRepository
+                .findById(orderDetailId)
+                .orElseThrow(() -> new AppException(ErrorCode.INVALID_ID)));
     }
 
     @Override
-    public OrderDetail saveOrderDetail(OrderDetailRequest orderDetailRequest) {
+    public OrderDetailResponse saveOrderDetail(OrderDetailRequest orderDetailRequest) {
         OrderDetail orderDetail = orderDetailMapper.toOrderDetail(orderDetailRequest);
 
         //Lần đầu tiên chưa có số lượng, chỉ thêm vào giỏ hàng nên mặc định là 1
@@ -50,20 +52,25 @@ public class OrderDetailService implements IOrderDetailService {
 
         orderDetail.setTotalPrice(orderDetailRequest.getPrice());
 
-        return orderDetailRepository.save(orderDetail);
+        return orderDetailMapper.toOrderDetailResponse(orderDetailRepository.save(orderDetail));
 
     }
 
     @Override
-    public OrderDetail updateOrderDetail(OrderDetailRequest orderDetailRequest, Long orderDetailId) {
-        OrderDetail orderDetail = getOrderDetail(orderDetailId);
+    public OrderDetailResponse updateOrderDetail(OrderDetailRequest orderDetailRequest, Long orderDetailId) {
+        if (orderDetailRequest.getQuantity() <= 0) {
+            deleteOrderDetail(orderDetailId);
+        }
+
+        OrderDetail orderDetail = orderDetailRepository.findById(orderDetailId).orElseThrow(() ->
+                new AppException(ErrorCode.INVALID_ID));
 
         //Update số lượng
         orderDetailMapper.updateOrderDetailFromDTO(orderDetailRequest, orderDetail);
 
-        orderDetail.setTotalPrice(orderDetailRequest.getPrice() * orderDetailRequest.getQuantity());
+        orderDetail.setTotalPrice(orderDetail.getPrice() * orderDetail.getQuantity());
 
-        return orderDetailRepository.save(orderDetail);
+        return orderDetailMapper.toOrderDetailResponse(orderDetailRepository.save(orderDetail));
 
     }
 
@@ -74,8 +81,8 @@ public class OrderDetailService implements IOrderDetailService {
     }
 
     @Override
-    public List<OrderDetail> getAllOrderDetails() {
-        return orderDetailRepository.findAll();
+    public List<OrderDetailResponse> getAllOrderDetails() {
+        return orderDetailRepository.findAll().stream().map(orderDetailMapper::toOrderDetailResponse).toList();
     }
 
 }

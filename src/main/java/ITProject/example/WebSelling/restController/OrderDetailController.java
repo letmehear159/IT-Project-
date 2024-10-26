@@ -1,6 +1,7 @@
 package ITProject.example.WebSelling.restController;
 
 import ITProject.example.WebSelling.dto.request.OrderDetailRequest;
+import ITProject.example.WebSelling.dto.response.OrderDetailResponse;
 import ITProject.example.WebSelling.entity.OrderDetail;
 import ITProject.example.WebSelling.service.impl.OrderDetailService;
 import lombok.AccessLevel;
@@ -19,22 +20,22 @@ public class OrderDetailController {
     OrderDetailService orderDetailService;
 
     @GetMapping("/")
-    public ResponseEntity<List<OrderDetail>> getOrderDetails() {
+    public ResponseEntity<List<OrderDetailResponse>> getOrderDetails() {
         return ResponseEntity.ok(orderDetailService.getAllOrderDetails());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<OrderDetail> getOrderDetailById(@PathVariable Long id) {
+    public ResponseEntity<OrderDetailResponse> getOrderDetailById(@PathVariable Long id) {
         return ResponseEntity.ok(orderDetailService.getOrderDetail(id));
     }
 
     @PostMapping("/")
-    public ResponseEntity<OrderDetail> createOrderDetail(@RequestBody OrderDetailRequest orderDetailRequest) {
+    public ResponseEntity<OrderDetailResponse> createOrderDetail(@RequestBody OrderDetailRequest orderDetailRequest) {
         return ResponseEntity.ok(orderDetailService.saveOrderDetail(orderDetailRequest));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<OrderDetail> updateOrderDetail(
+    public ResponseEntity<OrderDetailResponse> updateOrderDetail(
             @PathVariable Long id, @RequestBody OrderDetailRequest orderDetailRequest) {
         return ResponseEntity.ok(orderDetailService.updateOrderDetail(orderDetailRequest, id));
     }
