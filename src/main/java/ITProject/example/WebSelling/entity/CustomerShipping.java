@@ -1,5 +1,6 @@
 package ITProject.example.WebSelling.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -15,6 +16,7 @@ public class CustomerShipping {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cus_ship_id")
     Long id;
 
     @Column(name = "receiver_name")
