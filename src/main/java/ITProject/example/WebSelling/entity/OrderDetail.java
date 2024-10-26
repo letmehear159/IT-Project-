@@ -28,5 +28,9 @@ public class OrderDetail {
     @Column(name = "total_price")
     float totalPrice;
 
+    @ManyToOne
+    @JoinColumn(name = "cart_id")
+    ShoppingCart shoppingCart;
+
 
 }
