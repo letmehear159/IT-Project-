@@ -19,8 +19,4 @@ public class ShoppingCart {
     @Column(name = "cart_id")
     Long cartId;
 
-
-    @JoinColumn(name = "user_id")
-    @OneToOne
-    User user;
 }
