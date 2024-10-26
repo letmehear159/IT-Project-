@@ -3,6 +3,7 @@ package ITProject.example.WebSelling.restController;
 import ITProject.example.WebSelling.dto.request.ManufacturerRequest;
 import ITProject.example.WebSelling.entity.Manufacturer;
 import ITProject.example.WebSelling.service.impl.ManufacturerService;
+import ITProject.example.WebSelling.service.intefaces.IManufacturerService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -17,7 +18,7 @@ import java.util.List;
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class ManufacturerController {
 
-    ManufacturerService manufacturerService;
+    IManufacturerService manufacturerService;
 
     @PostMapping("/")
     public ResponseEntity<Manufacturer> addManufacturer(@RequestBody ManufacturerRequest manufacturerRequest) {
