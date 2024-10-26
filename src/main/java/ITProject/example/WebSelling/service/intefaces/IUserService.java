@@ -7,18 +7,20 @@ import ITProject.example.WebSelling.entity.User;
 import java.util.List;
 
 public interface IUserService {
-    public UserResponse save(UserRequest userRequest);
+     UserResponse save(UserRequest userRequest);
 
 
-    public UserResponse update(UserRequest userRequest, Long id);
+     UserResponse update(UserRequest userRequest, Long id);
 
-    public UserResponse getUserById(Long userId);
+     UserResponse getUserById(Long userId);
 
-    public void delete(Long userId);
+     void delete(Long userId);
 
-    public List<UserResponse> getAllUsers();
+     List<UserResponse> getAllUsers();
 
-    public UserResponse findUserByUsername(String username);
+     UserResponse findUserByUsername(String username);
+
+
 
 
 
