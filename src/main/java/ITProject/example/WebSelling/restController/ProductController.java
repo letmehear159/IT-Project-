@@ -4,6 +4,7 @@ import ITProject.example.WebSelling.dto.request.ProductRequest;
 import ITProject.example.WebSelling.dto.response.ProductResponse;
 import ITProject.example.WebSelling.entity.ProductImage;
 import ITProject.example.WebSelling.service.impl.ProductService;
+import ITProject.example.WebSelling.service.intefaces.IProductService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -20,7 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class ProductController {
-    ProductService productService;
+    IProductService productService;
 
     @PostMapping(value = "/", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ProductResponse> createProduct(@RequestPart ProductRequest product,
