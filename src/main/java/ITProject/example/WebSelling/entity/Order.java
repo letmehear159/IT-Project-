@@ -1,5 +1,7 @@
 package ITProject.example.WebSelling.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -32,19 +34,20 @@ public class Order {
     @Column(name = "receive_date")
     LocalDate receiveDate;
 
-    @Column(name = "order_state", nullable = false)
-    String orderStatus;
-
     @Column(name = "shipping_state", nullable = false)
+    //Trạng thái giao hàng
     String shippingStatus;
 
     @Column(name = "payment_method", nullable = false)
+    //Phương thức thanh toán
     String paymentMethod;
 
     @Column(name = "payment_status", nullable = false)
+    //Trạng thái thanh toán
     String paymentStatus;
 
     @Column(name = "shipping_method", nullable = false)
+    //Phương thức giao hàng
     String shippingMethod;
 
     @Column(name = "phone_number", nullable = false)
@@ -61,7 +64,11 @@ public class Order {
     }
 
     @OneToMany
-    @JoinColumn(name = "order_id")
+    @JoinColumn(name = "order_id", nullable = false)
     List<OrderDetail> orderDetails;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonBackReference
+    User user;
 }
