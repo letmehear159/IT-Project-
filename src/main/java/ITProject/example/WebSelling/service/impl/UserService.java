@@ -7,6 +7,7 @@ import ITProject.example.WebSelling.entity.ShoppingCart;
 import ITProject.example.WebSelling.entity.User;
 import ITProject.example.WebSelling.enums.ROLE;
 import ITProject.example.WebSelling.mapper.UserMapper;
+import ITProject.example.WebSelling.repository.ShoppingCartRepository;
 import ITProject.example.WebSelling.repository.UserRepository;
 import ITProject.example.WebSelling.service.intefaces.IUserService;
 import lombok.AccessLevel;
@@ -28,6 +29,7 @@ public class UserService implements IUserService {
     UserRepository userRepository;
     UserMapper userMapper;
     PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
+    ShoppingCartRepository shoppingCartRepository;
 
     @Override
     public UserResponse save(UserRequest userRequest) {
@@ -43,10 +45,19 @@ public class UserService implements IUserService {
 //        roles.add(Role.builder().roleId(ROLE.USER.name()).build());
 //
 //        user.setRoles(roles);
+//        ShoppingCart cart = new ShoppingCart();
 
-        user.setShoppingCart(new ShoppingCart());
+//        var cart = shoppingCartRepository.save(); // Ensure this is saved before setting it in the user object
 
-        return userMapper.toUserResponse(userRepository.save(user));
+
+        var userResponse = userMapper.toUserResponse(userRepository.save(user));
+
+        shoppingCartRepository.save(ShoppingCart
+                .builder()
+                .user(user)
+                .build());
+
+        return userResponse;
     }
 
     @Override
@@ -80,8 +91,6 @@ public class UserService implements IUserService {
     public UserResponse findUserByUsername(String username) {
         return userMapper.toUserResponse(userRepository.findByUsername(username).orElseThrow(RuntimeException::new));
     }
-
-
 
 
 }
