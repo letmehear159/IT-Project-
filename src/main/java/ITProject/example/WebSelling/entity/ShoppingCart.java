@@ -19,7 +19,8 @@ public class ShoppingCart {
     @Column(name = "cart_id")
     Long cartId;
 
-    @OneToMany(mappedBy = "shoppingCart")
-    List<OrderDetail> orderDetails;
 
+    @JoinColumn(name = "user_id")
+    @OneToOne
+    User user;
 }
