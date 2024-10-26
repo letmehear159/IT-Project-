@@ -2,10 +2,8 @@ package ITProject.example.WebSelling.service.impl;
 
 import ITProject.example.WebSelling.dto.request.UserRequest;
 import ITProject.example.WebSelling.dto.response.UserResponse;
-import ITProject.example.WebSelling.entity.Role;
 import ITProject.example.WebSelling.entity.ShoppingCart;
 import ITProject.example.WebSelling.entity.User;
-import ITProject.example.WebSelling.enums.ROLE;
 import ITProject.example.WebSelling.mapper.UserMapper;
 import ITProject.example.WebSelling.repository.ShoppingCartRepository;
 import ITProject.example.WebSelling.repository.UserRepository;
@@ -17,9 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -48,16 +44,12 @@ public class UserService implements IUserService {
 //        ShoppingCart cart = new ShoppingCart();
 
 //        var cart = shoppingCartRepository.save(); // Ensure this is saved before setting it in the user object
+        ShoppingCart cart = new ShoppingCart();
+
+        user.setShoppingCart(cart);
 
 
-        var userResponse = userMapper.toUserResponse(userRepository.save(user));
-
-        shoppingCartRepository.save(ShoppingCart
-                .builder()
-                .user(user)
-                .build());
-
-        return userResponse;
+        return userMapper.toUserResponse(userRepository.save(user));
     }
 
     @Override
