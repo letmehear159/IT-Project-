@@ -3,6 +3,7 @@ package ITProject.example.WebSelling.service.impl;
 import ITProject.example.WebSelling.dto.request.UserRequest;
 import ITProject.example.WebSelling.dto.response.UserResponse;
 import ITProject.example.WebSelling.entity.Role;
+import ITProject.example.WebSelling.entity.ShoppingCart;
 import ITProject.example.WebSelling.entity.User;
 import ITProject.example.WebSelling.enums.ROLE;
 import ITProject.example.WebSelling.mapper.UserMapper;
@@ -42,6 +43,8 @@ public class UserService implements IUserService {
 //        roles.add(Role.builder().roleId(ROLE.USER.name()).build());
 //
 //        user.setRoles(roles);
+
+        user.setShoppingCart(new ShoppingCart());
 
         return userMapper.toUserResponse(userRepository.save(user));
     }
