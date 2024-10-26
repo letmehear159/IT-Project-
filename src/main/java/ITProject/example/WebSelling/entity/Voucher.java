@@ -1,5 +1,7 @@
 package ITProject.example.WebSelling.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -26,7 +28,7 @@ public class Voucher {
     @Column(name = "number_left")
     int numberVoucherLeft;
 
-
+    @JsonIgnore
     @Column(name = "state")
     int status;
 
