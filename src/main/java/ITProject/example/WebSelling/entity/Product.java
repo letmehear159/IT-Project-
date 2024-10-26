@@ -1,9 +1,11 @@
 package ITProject.example.WebSelling.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,5 +49,7 @@ public class Product extends BaseEntity {
 
     String thumbnail;
 
-
+    @OneToMany(mappedBy = "product")
+    @JsonManagedReference
+    List<ProductImage> productImages;
 }
