@@ -23,6 +23,8 @@ public enum ErrorCode {
     EXCEED_MAXIMUM_ALLOW_NUMBER(1015,"File images are more than 5 to saved in database", HttpStatus.BAD_REQUEST),
     FILE_IMAGE_TOO_LARGE(1016, "File image is too large", HttpStatus.PAYLOAD_TOO_LARGE),
     UPLOAD_IMAGE_MUST_BE_IMAGE_TYPE(1017, "File type must be image type", HttpStatus.UNSUPPORTED_MEDIA_TYPE),
+    INVALID_SHOPPINGCART_ID(1018,"Shopping cart Id is invalid", HttpStatus.BAD_REQUEST),
+    INVALID_PRODUCT_ID(1019, "Product Id is invalid", HttpStatus.BAD_REQUEST),
     ;
 
     private int code;
