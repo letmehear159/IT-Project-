@@ -17,5 +17,4 @@ public interface IOrderDetailService {
 
     List<OrderDetailResponse> getAllOrderDetails();
 
-
 }
