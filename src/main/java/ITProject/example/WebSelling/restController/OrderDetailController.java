@@ -1,6 +1,7 @@
 package ITProject.example.WebSelling.restController;
 
 import ITProject.example.WebSelling.dto.request.OrderDetailRequest;
+import ITProject.example.WebSelling.dto.request.OrderDetailVoucherRequest;
 import ITProject.example.WebSelling.dto.response.OrderDetailResponse;
 import ITProject.example.WebSelling.entity.OrderDetail;
 import ITProject.example.WebSelling.service.impl.OrderDetailService;
@@ -35,10 +36,10 @@ public class OrderDetailController {
         return ResponseEntity.ok(orderDetailService.saveOrderDetail(orderDetailRequest));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<OrderDetailResponse> updateOrderDetail(
-            @PathVariable Long id, @RequestBody OrderDetailRequest orderDetailRequest) {
-        return ResponseEntity.ok(orderDetailService.updateOrderDetail(orderDetailRequest, id));
+    @PutMapping("/")
+    public ResponseEntity<List<OrderDetailResponse>> updateOrderDetail(
+            @RequestBody List<OrderDetailVoucherRequest> orderDetailVoucherRequests) {
+        return ResponseEntity.ok(orderDetailService.updateOrderDetails(orderDetailVoucherRequests));
     }
 
     @DeleteMapping("/{id}")
