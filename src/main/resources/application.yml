@@ -1,10 +1,10 @@
 spring:
   datasource:
-    url: "jdbc:mysql://localhost:3306/estore"
+    url: "jdbc:mysql://localhost:3306/estorefinal"
     username: root
     password: Letmehear04@
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     show-sql: true
