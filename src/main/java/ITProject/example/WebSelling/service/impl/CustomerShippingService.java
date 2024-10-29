@@ -27,7 +27,7 @@ public class CustomerShippingService implements ICustomerShippingService {
     @Override
     public CustomerShipping getCustomerShipping(Long userId) {
         return customerShippingRepository.findById(userId).orElseThrow(
-                () -> new AppException(ErrorCode.INVALID_ID)
+                () -> new AppException(ErrorCode.INVALID_CUSTOMER_SHIPPING_ID)
         );
     }
 
@@ -36,7 +36,7 @@ public class CustomerShippingService implements ICustomerShippingService {
         var customerShipping = customerShippingMapper.toCustomerShipping(customerShippingRequest);
 
         var user = userRepository.findById(customerShippingRequest.getUserId()).orElseThrow(
-                () -> new AppException(ErrorCode.INVALID_ID)
+                () -> new AppException(ErrorCode.INVALID_CUSTOMER_SHIPPING_ID)
         );
 
         List<CustomerShipping> shippingList = user.getCustomerShipping()
@@ -66,7 +66,7 @@ public class CustomerShippingService implements ICustomerShippingService {
     @Override
     public CustomerShipping updateCustomerShipping(CustomerShippingRequest customerShippingRequest, Long userId) {
         CustomerShipping customerShipping = customerShippingRepository.findById(userId).orElseThrow(
-                () -> new AppException(ErrorCode.INVALID_ID)
+                () -> new AppException(ErrorCode.INVALID_CUSTOMER_SHIPPING_ID)
         );
 
         customerShippingMapper.updateCustomerShipping(customerShippingRequest, customerShipping);

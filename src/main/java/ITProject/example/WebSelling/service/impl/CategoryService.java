@@ -31,7 +31,7 @@ public class CategoryService implements ICategoryService {
 
     @Override
     public Category getCategoryById(Long id) {
-        return categoryRepository.findById(id).orElseThrow(() -> new AppException(ErrorCode.INVALID_ID));
+        return categoryRepository.findById(id).orElseThrow(() -> new AppException(ErrorCode.INVALID_CATEGORY_ID));
     }
 
     @Override
@@ -43,7 +43,7 @@ public class CategoryService implements ICategoryService {
     public Category updateCategory(CategoryRequest categoryRequest, Long Id) {
         Category category = categoryRepository
                 .findById(Id)
-                .orElseThrow(() -> new AppException(ErrorCode.INVALID_ID));
+                .orElseThrow(() -> new AppException(ErrorCode.INVALID_CATEGORY_ID));
 
         categoryMapper.updateCategoryFromDTO(categoryRequest, category);
 

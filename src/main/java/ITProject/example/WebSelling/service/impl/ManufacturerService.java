@@ -31,7 +31,7 @@ public class ManufacturerService implements IManufacturerService {
 
     @Override
     public Manufacturer getManufacturerById(Long id) {
-        return manufacturerRepository.findById(id).orElseThrow(() -> new AppException(ErrorCode.INVALID_ID));
+        return manufacturerRepository.findById(id).orElseThrow(() -> new AppException(ErrorCode.INVALID_MANUFACTURER_ID));
     }
 
     @Override
@@ -43,7 +43,7 @@ public class ManufacturerService implements IManufacturerService {
     public Manufacturer updateManufacturer(ManufacturerRequest manufacturerRequest, Long Id) {
         Manufacturer manufacturer = manufacturerRepository
                 .findById(Id)
-                .orElseThrow(() -> new AppException(ErrorCode.INVALID_ID));
+                .orElseThrow(() -> new AppException(ErrorCode.INVALID_MANUFACTURER_ID));
 
         manufacturerMapper.updateManufacturerFromDto(manufacturerRequest, manufacturer);
 

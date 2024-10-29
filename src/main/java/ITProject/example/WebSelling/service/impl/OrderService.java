@@ -39,7 +39,7 @@ public class OrderService implements IOrderService {
         Order order = orderMapper.toOrder(orderRequest);
 
         User user = userRepository.findById(orderRequest.getUserId()).orElseThrow(
-                () -> new AppException(ErrorCode.INVALID_ID)
+                () -> new AppException(ErrorCode.INVALID_ORDER_ID)
         );
 
         order.setUser(user);
@@ -69,7 +69,7 @@ public class OrderService implements IOrderService {
                 .getOrderDetailIds()
                 .stream()
                 .map(orderDetailId -> orderDetailRepository.findById(orderDetailId).orElseThrow(
-                        () -> new AppException(ErrorCode.INVALID_ID)
+                        () -> new AppException(ErrorCode.INVALID_ORDER_ID)
                 )).toList();
 
         order.setOrderDetails(orderDetails);

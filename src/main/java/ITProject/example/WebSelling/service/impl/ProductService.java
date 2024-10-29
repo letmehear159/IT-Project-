@@ -52,11 +52,11 @@ public class ProductService implements IProductService {
 
         product.setCategory(categoryRepository
                 .findByCategoryName(productRequest.getCategoryName())
-                .orElseThrow(() -> new AppException(ErrorCode.INVALID_NAME)));
+                .orElseThrow(() -> new AppException(ErrorCode.INVALID_CATEGORY_NAME)));
 
         product.setManufacturer(manufacturerRepository
                 .findByManufacturerName(productRequest.getManufacturerName())
-                .orElseThrow(() -> new AppException(ErrorCode.INVALID_NAME)));
+                .orElseThrow(() -> new AppException(ErrorCode.INVALID_MANUFACTURER_NAME)));
 
         product.setStatus(1);
 
@@ -77,23 +77,19 @@ public class ProductService implements IProductService {
 
     @Override
     public ProductResponse updateProduct(ProductRequest productRequest, Long productId) {
-        Product product = productRepository.findById(productId).orElseThrow(() -> new AppException(ErrorCode.INVALID_ID));
+        Product product = productRepository.findById(productId).orElseThrow(
+                () -> new AppException(ErrorCode.INVALID_PRODUCT_ID));
 
         //Chỉ có thể thêm hoặc cập nhật specifications, không thể xóa toàn bộ để thêm mới được
         productMapper.updateProductFromDto(productRequest, product);
 
-        var specifications = productRequest.getSpecifications();
-        for (var entry : specifications.entrySet()) {
-            product.getSpecifications().put(entry.getKey(), entry.getValue());
-        }
-
         product.setCategory(categoryRepository
                 .findByCategoryName(productRequest.getCategoryName())
-                .orElseThrow(() -> new AppException(ErrorCode.INVALID_NAME)));
+                .orElseThrow(() -> new AppException(ErrorCode.INVALID_CATEGORY_NAME)));
 
         product.setManufacturer(manufacturerRepository
                 .findByManufacturerName(productRequest.getManufacturerName())
-                .orElseThrow(() -> new AppException(ErrorCode.INVALID_NAME)));
+                .orElseThrow(() -> new AppException(ErrorCode.INVALID_MANUFACTURER_NAME)));
 
         return productMapper.toProductResponse(productRepository.save(product));
 
@@ -117,14 +113,14 @@ public class ProductService implements IProductService {
 
         return productMapper.toProductResponse(productRepository
                 .findById(id)
-                .orElseThrow(() -> new AppException(ErrorCode.INVALID_ID)));
+                .orElseThrow(() -> new AppException(ErrorCode.INVALID_PRODUCT_ID)));
     }
 
     public List<ProductImage> uploadImages(Long productId, List<MultipartFile> files) throws IOException {
 
         Product existingProduct = productRepository
                 .findById(productId)
-                .orElseThrow(() -> new AppException(ErrorCode.INVALID_ID));
+                .orElseThrow(() -> new AppException(ErrorCode.INVALID_PRODUCT_ID));
 
         files = files == null ? new ArrayList<MultipartFile>() : files;
 
@@ -171,7 +167,7 @@ public class ProductService implements IProductService {
                 .findById(productId)
                 .orElseThrow(() ->
                         new AppException(
-                                ErrorCode.INVALID_ID));
+                                ErrorCode.INVALID_PRODUCT_ID));
 
         ProductImage newProductImage = ProductImage.builder()
                 .product(existingProduct)

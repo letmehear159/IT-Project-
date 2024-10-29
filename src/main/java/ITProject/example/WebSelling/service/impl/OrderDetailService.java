@@ -87,7 +87,7 @@ public class OrderDetailService implements IOrderDetailService {
         var orderDetailId = orderDetailRequest.getOrderId();
 
         OrderDetail orderDetail = orderDetailRepository.findById(orderDetailId).orElseThrow(() ->
-                new AppException(ErrorCode.INVALID_ID));
+                new AppException(ErrorCode.INVALID_ORDER_DETAIL_ID));
 
         //Update số lượng
         //Voucher nên để xử lý ở javascript. Sau khi nhập voucher xác nhận order hàng thì mới bắt đầu gửi lại
