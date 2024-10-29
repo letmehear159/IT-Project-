@@ -5,6 +5,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.List;
+import java.util.Set;
 
 @Builder
 @NoArgsConstructor
@@ -22,5 +23,5 @@ public class Role {
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
-    List<Permission> permissions;
+    Set<Permission> permissions;
 }
