@@ -2,9 +2,11 @@ package ITProject.example.WebSelling.dto.response;
 
 import ITProject.example.WebSelling.entity.Category;
 import ITProject.example.WebSelling.entity.Manufacturer;
+import ITProject.example.WebSelling.entity.Specification;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
 import java.util.Map;
 
 @AllArgsConstructor
@@ -25,7 +27,9 @@ public class ProductResponse {
 
     Manufacturer manufacturer;
 
-    Map<String, String> specifications;
+//    Map<String, String> specifications;
+
+    List<Specification> specifications;
 
     String description;
 

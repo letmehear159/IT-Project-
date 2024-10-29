@@ -36,11 +36,9 @@ public class Product extends BaseEntity {
     Manufacturer manufacturer;
 
 
-    @ElementCollection
-    @CollectionTable(name = "specifications", joinColumns = @JoinColumn(name = "product_id"))
-    @MapKeyColumn(name = "spec_key")
-    @Column(name = "spec_value")
-    private Map<String, String> specifications = new HashMap<>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "product_id", nullable = false)
+    private List<Specification> specifications = new ArrayList<>();
 
     @Column(name = "state")
     Integer status = 1;
