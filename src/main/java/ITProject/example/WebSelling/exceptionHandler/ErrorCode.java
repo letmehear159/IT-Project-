@@ -25,6 +25,13 @@ public enum ErrorCode {
     UPLOAD_IMAGE_MUST_BE_IMAGE_TYPE(1017, "File type must be image type", HttpStatus.UNSUPPORTED_MEDIA_TYPE),
     INVALID_SHOPPINGCART_ID(1018,"Shopping cart Id is invalid", HttpStatus.BAD_REQUEST),
     INVALID_PRODUCT_ID(1019, "Product Id is invalid", HttpStatus.BAD_REQUEST),
+    INVALID_CATEGORY_ID(1020, "Category Id is invalid", HttpStatus.BAD_REQUEST),
+    INVALID_CUSTOMER_SHIPPING_ID(1021, "Customer shipping Id is invalid", HttpStatus.BAD_REQUEST),
+    INVALID_MANUFACTURER_ID(1022, "Manufacturer Id is invalid", HttpStatus.BAD_REQUEST),
+    INVALID_ORDER_DETAIL_ID(1023, "Order detail Id is invalid", HttpStatus.BAD_REQUEST),
+    INVALID_ORDER_ID(1024, "Order Id is invalid", HttpStatus.BAD_REQUEST),
+    INVALID_CATEGORY_NAME(1025, "Category name is invalid", HttpStatus.BAD_REQUEST),
+    INVALID_MANUFACTURER_NAME(1026, "Manufacturer name is invalid", HttpStatus.BAD_REQUEST),
     ;
 
     private int code;
