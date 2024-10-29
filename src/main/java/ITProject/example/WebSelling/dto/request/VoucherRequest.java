@@ -18,5 +18,7 @@ public class VoucherRequest {
 
     int status;
 
+    String voucherName;
+
 
 }

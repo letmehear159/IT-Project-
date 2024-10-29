@@ -16,5 +16,6 @@ public interface IVoucherService {
 
     Voucher getVoucherById(Long voucherId);
 
+    Voucher getVoucherByVoucherName(String voucherName);
 
 }

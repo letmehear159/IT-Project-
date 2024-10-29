@@ -32,4 +32,7 @@ public class Voucher {
     @Column(name = "state")
     int status;
 
+    @Column(name = "voucher_name")
+    String voucherName;
+
 }

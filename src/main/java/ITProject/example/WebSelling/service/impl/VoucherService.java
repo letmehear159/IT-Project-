@@ -61,4 +61,11 @@ public class VoucherService implements IVoucherService {
                 () -> new AppException(ErrorCode.INVALID_ID)
         );
     }
+
+    @Override
+    public Voucher getVoucherByVoucherName(String voucherName) {
+        return voucherRepository.findByVoucherName(voucherName);
+    }
+
+
 }

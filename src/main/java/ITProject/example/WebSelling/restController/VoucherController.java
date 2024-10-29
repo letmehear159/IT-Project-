@@ -44,4 +44,9 @@ public class VoucherController {
     public void deleteVoucher(@PathVariable Long id) {
         voucherService.deleteVoucher(id);
     }
+
+    @GetMapping("/name/{voucherName}")
+    public ResponseEntity<Voucher> getVoucherByName(@PathVariable String voucherName) {
+        return ResponseEntity.ok(voucherService.getVoucherByVoucherName(voucherName));
+    }
 }
