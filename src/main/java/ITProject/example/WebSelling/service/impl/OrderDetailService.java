@@ -67,6 +67,7 @@ public class OrderDetailService implements IOrderDetailService {
 //            orderDetail.setTotalPrice(orderDetail.getPrice() * (100 - percentage) / 100);
 //
 //        } else {
+        orderDetail.setPrice(orderDetail.getProduct().getPrice());
 
         orderDetail.setTotalPrice(orderDetail.getProduct().getPrice());
 

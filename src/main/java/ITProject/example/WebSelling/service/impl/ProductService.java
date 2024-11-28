@@ -5,6 +5,7 @@ import ITProject.example.WebSelling.dto.request.ProductRequest;
 import ITProject.example.WebSelling.dto.response.ProductResponse;
 import ITProject.example.WebSelling.entity.Product;
 import ITProject.example.WebSelling.entity.ProductImage;
+import ITProject.example.WebSelling.entity.Specification;
 import ITProject.example.WebSelling.exceptionHandler.AppException;
 import ITProject.example.WebSelling.exceptionHandler.ErrorCode;
 import ITProject.example.WebSelling.mapper.ProductMapper;
@@ -29,10 +30,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -76,23 +76,62 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public ProductResponse updateProduct(ProductRequest productRequest, Long productId) {
+    public ProductResponse updateProduct(ProductRequest productRequest, MultipartFile thumbnail, Long productId) throws IOException {
         Product product = productRepository.findById(productId).orElseThrow(
                 () -> new AppException(ErrorCode.INVALID_PRODUCT_ID));
 
+        if(productRequest.getCategoryName()==null){
+            if (isImageFile(thumbnail)) {
+                // Lưu file và cập nhật thumbnail trong DTO
+                String filename = storeFile(thumbnail); // Thay thế hàm này với code của bạn để lưu file
+                product.setThumbnail(filename);
+            }
+           return productMapper.toProductResponse(productRepository.save(product));
+        }
         //Chỉ có thể thêm hoặc cập nhật specifications, không thể xóa toàn bộ để thêm mới được
         productMapper.updateProductFromDto(productRequest, product);
 
-        product.setCategory(categoryRepository
-                .findByCategoryName(productRequest.getCategoryName())
-                .orElseThrow(() -> new AppException(ErrorCode.INVALID_CATEGORY_NAME)));
+        if (productRequest.getCategoryName() != null) {
+            product.setCategory(categoryRepository
+                    .findByCategoryName(productRequest.getCategoryName())
+                    .orElseThrow(() -> new AppException(ErrorCode.INVALID_CATEGORY_NAME)));
+        }
 
-        product.setManufacturer(manufacturerRepository
-                .findByManufacturerName(productRequest.getManufacturerName())
-                .orElseThrow(() -> new AppException(ErrorCode.INVALID_MANUFACTURER_NAME)));
+        if (productRequest.getManufacturerName() != null) {
+            product.setManufacturer(manufacturerRepository
+                    .findByManufacturerName(productRequest.getManufacturerName())
+                    .orElseThrow(() -> new AppException(ErrorCode.INVALID_MANUFACTURER_NAME)));
+        }
+
+        var specifications = productRequest.getSpecifications();
+
+        var productSpecifications = product.getSpecifications();
+
+        Map<String, Specification> specMap = productSpecifications.stream()
+                .collect(Collectors.toMap(Specification::getSpecKey, Function.identity()));
+
+        // Lặp qua các Specification mới
+        for (Specification newSpec : specifications) {
+            // Nếu Specification đã tồn tại, cập nhật giá trị spec_value
+            Specification existingSpec = specMap.get(newSpec.getSpecKey());
+            if (existingSpec != null) {
+
+                existingSpec.setSpecValue(newSpec.getSpecValue());
+
+            } else {
+
+                // Nếu Specification không tồn tại, thêm vào danh sách
+                product.getSpecifications().add(newSpec);
+            }
+        }
+        if (isImageFile(thumbnail)) {
+            // Lưu file và cập nhật thumbnail trong DTO
+            String filename = storeFile(thumbnail); // Thay thế hàm này với code của bạn để lưu file
+            product.setThumbnail(filename);
+        }
+
 
         return productMapper.toProductResponse(productRepository.save(product));
-
     }
 
     @Override

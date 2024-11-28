@@ -8,6 +8,7 @@ import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,7 +30,7 @@ public class ProductResponse {
 
 //    Map<String, String> specifications;
 
-    List<Specification> specifications;
+    Set<Specification> specifications;
 
     String description;
 

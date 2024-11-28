@@ -39,7 +39,7 @@ public class OrderService implements IOrderService {
         Order order = orderMapper.toOrder(orderRequest);
 
         User user = userRepository.findById(orderRequest.getUserId()).orElseThrow(
-                () -> new AppException(ErrorCode.INVALID_ORDER_ID)
+                () -> new AppException(ErrorCode.INVALID_USERID)
         );
 
         order.setUser(user);

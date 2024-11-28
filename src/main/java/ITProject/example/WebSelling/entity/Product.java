@@ -5,10 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -38,7 +35,7 @@ public class Product extends BaseEntity {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "product_id", nullable = false)
-    private List<Specification> specifications = new ArrayList<>();
+    Set<Specification> specifications = new HashSet<>();
 
     @Column(name = "state")
     Integer status = 1;
