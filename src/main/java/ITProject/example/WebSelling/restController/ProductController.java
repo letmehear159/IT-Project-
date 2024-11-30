@@ -31,8 +31,8 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProductResponse> updateProduct(@PathVariable Long id, @RequestPart ProductRequest product,@RequestPart("thumbnail") MultipartFile thumbnail) throws IOException {
-        return ResponseEntity.ok().body(productService.updateProduct(product, thumbnail, id));
+    public ResponseEntity<ProductResponse> updateProduct(@PathVariable Long id, @RequestBody ProductRequest product) throws IOException {
+        return ResponseEntity.ok().body(productService.updateProduct(product, id));
     }
 
     @GetMapping("/")
@@ -57,4 +57,11 @@ public class ProductController {
             throws IOException {
         return ResponseEntity.ok(productService.uploadImages(id, file));
     }
+
+    @GetMapping("/procat/{categoryType}")
+    public ResponseEntity<List<ProductResponse>> getProductByCategory(@PathVariable String categoryType) {
+        return ResponseEntity.ok(productService.getAllProductsByCategory(categoryType));
+    }
+
+
 }

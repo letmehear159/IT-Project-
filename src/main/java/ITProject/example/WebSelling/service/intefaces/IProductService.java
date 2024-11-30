@@ -12,7 +12,7 @@ import java.util.List;
 public interface IProductService {
     ProductResponse addProduct(ProductRequest productRequest, MultipartFile thumbnail) throws IOException;
 
-    ProductResponse updateProduct(ProductRequest productRequest,MultipartFile thumbnail, Long productId) throws IOException;
+    ProductResponse updateProduct(ProductRequest productRequest, Long productId) throws IOException;
 
     void deleteProduct(Long id);
 
@@ -22,5 +22,7 @@ public interface IProductService {
     ProductResponse getProduct(Long id);
 
     List<ProductImage> uploadImages(Long productId, List<MultipartFile> files) throws IOException;
+
+    List<ProductResponse> getAllProductsByCategory(String category);
 
 }

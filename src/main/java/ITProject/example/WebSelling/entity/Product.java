@@ -47,4 +47,5 @@ public class Product extends BaseEntity {
     @OneToMany(mappedBy = "product")
     @JsonManagedReference
     List<ProductImage> productImages;
+
 }

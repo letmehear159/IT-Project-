@@ -25,7 +25,7 @@ public class Specification {
     @Column(name = "spec_value")
     String specValue;
 
-
-
+    @Column(name = "brief_spec_value")
+    String briefSpecValue;
 
 }

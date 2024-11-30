@@ -3,6 +3,7 @@ package ITProject.example.WebSelling.service.impl;
 import ITProject.example.WebSelling.dto.request.ProductImageRequest;
 import ITProject.example.WebSelling.dto.request.ProductRequest;
 import ITProject.example.WebSelling.dto.response.ProductResponse;
+import ITProject.example.WebSelling.entity.Category;
 import ITProject.example.WebSelling.entity.Product;
 import ITProject.example.WebSelling.entity.ProductImage;
 import ITProject.example.WebSelling.entity.Specification;
@@ -76,20 +77,14 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public ProductResponse updateProduct(ProductRequest productRequest, MultipartFile thumbnail, Long productId) throws IOException {
+    public ProductResponse updateProduct(ProductRequest productRequest, Long productId) throws IOException {
         Product product = productRepository.findById(productId).orElseThrow(
                 () -> new AppException(ErrorCode.INVALID_PRODUCT_ID));
 
-        if(productRequest.getCategoryName()==null){
-            if (isImageFile(thumbnail)) {
-                // Lưu file và cập nhật thumbnail trong DTO
-                String filename = storeFile(thumbnail); // Thay thế hàm này với code của bạn để lưu file
-                product.setThumbnail(filename);
-            }
-           return productMapper.toProductResponse(productRepository.save(product));
-        }
+
         //Chỉ có thể thêm hoặc cập nhật specifications, không thể xóa toàn bộ để thêm mới được
-        productMapper.updateProductFromDto(productRequest, product);
+
+//        productMapper.updateProductFromDto(productRequest, product);
 
         if (productRequest.getCategoryName() != null) {
             product.setCategory(categoryRepository
@@ -115,20 +110,19 @@ public class ProductService implements IProductService {
             // Nếu Specification đã tồn tại, cập nhật giá trị spec_value
             Specification existingSpec = specMap.get(newSpec.getSpecKey());
             if (existingSpec != null) {
-
                 existingSpec.setSpecValue(newSpec.getSpecValue());
-
+                if(newSpec.getBriefSpecValue()!=null)
+                    existingSpec.setBriefSpecValue(newSpec.getBriefSpecValue());
             } else {
-
                 // Nếu Specification không tồn tại, thêm vào danh sách
                 product.getSpecifications().add(newSpec);
             }
         }
-        if (isImageFile(thumbnail)) {
-            // Lưu file và cập nhật thumbnail trong DTO
-            String filename = storeFile(thumbnail); // Thay thế hàm này với code của bạn để lưu file
-            product.setThumbnail(filename);
-        }
+//        if (isImageFile(thumbnail)) {
+//            // Lưu file và cập nhật thumbnail trong DTO
+//            String filename = storeFile(thumbnail); // Thay thế hàm này với code của bạn để lưu file
+//            product.setThumbnail(filename);
+//        }
 
 
         return productMapper.toProductResponse(productRepository.save(product));
@@ -199,6 +193,15 @@ public class ProductService implements IProductService {
             productImages.add(productImage);
         }
         return productImages;
+    }
+
+    @Override
+    public List<ProductResponse> getAllProductsByCategory(String categoryName) {
+        Category category = categoryRepository.findByCategoryName(categoryName)
+                .orElseThrow(() -> new AppException(ErrorCode.INVALID_CATEGORY_NAME));
+
+        List<Product> products = productRepository.findByCategory(category);
+        return products.stream().map(productMapper::toProductResponse).collect(Collectors.toList());
     }
 
     public ProductImage createProductImage(Long productId, ProductImageRequest productImageDTO) {
