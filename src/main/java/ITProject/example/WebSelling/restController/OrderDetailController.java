@@ -1,10 +1,8 @@
 package ITProject.example.WebSelling.restController;
 
-import ITProject.example.WebSelling.dto.request.OrderDetailRequest;
-import ITProject.example.WebSelling.dto.request.OrderDetailVoucherRequest;
+import ITProject.example.WebSelling.dto.request.OrderProductRequest.OrderDetailRequest;
+import ITProject.example.WebSelling.dto.request.OrderProductRequest.OrderDetailVoucherRequest;
 import ITProject.example.WebSelling.dto.response.OrderDetailResponse;
-import ITProject.example.WebSelling.entity.OrderDetail;
-import ITProject.example.WebSelling.service.impl.OrderDetailService;
 import ITProject.example.WebSelling.service.intefaces.IOrderDetailService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

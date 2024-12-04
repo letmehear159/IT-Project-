@@ -1,6 +1,6 @@
 package ITProject.example.WebSelling.restController;
 
-import ITProject.example.WebSelling.dto.request.RoleRequest;
+import ITProject.example.WebSelling.dto.request.RolePermissionRequest.RoleRequest;
 import ITProject.example.WebSelling.entity.Role;
 import ITProject.example.WebSelling.response.APIResponse;
 import ITProject.example.WebSelling.service.intefaces.IRoleService;

@@ -1,5 +1,6 @@
-package ITProject.example.WebSelling.dto.request;
+package ITProject.example.WebSelling.dto.request.ProductRequets;
 
+import ITProject.example.WebSelling.entity.DetailDescription;
 import ITProject.example.WebSelling.entity.Specification;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
@@ -27,6 +28,9 @@ public class ProductRequest {
 //    private Map<String, String> specifications;
 
     Set<Specification> specifications;
+
+    @JsonProperty("detail_descriptions")
+    Set<DetailDescription> detailDescriptions;
 
     String description;
 

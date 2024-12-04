@@ -1,9 +1,8 @@
 package ITProject.example.WebSelling.service.intefaces;
 
-import ITProject.example.WebSelling.dto.request.OrderDetailRequest;
-import ITProject.example.WebSelling.dto.request.OrderDetailVoucherRequest;
+import ITProject.example.WebSelling.dto.request.OrderProductRequest.OrderDetailRequest;
+import ITProject.example.WebSelling.dto.request.OrderProductRequest.OrderDetailVoucherRequest;
 import ITProject.example.WebSelling.dto.response.OrderDetailResponse;
-import ITProject.example.WebSelling.entity.OrderDetail;
 
 import java.util.List;
 

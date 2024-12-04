@@ -1,12 +1,9 @@
 package ITProject.example.WebSelling.service.impl;
 
-import ITProject.example.WebSelling.dto.request.ProductImageRequest;
-import ITProject.example.WebSelling.dto.request.ProductRequest;
+import ITProject.example.WebSelling.dto.request.ProductRequets.ProductImageRequest;
+import ITProject.example.WebSelling.dto.request.ProductRequets.ProductRequest;
 import ITProject.example.WebSelling.dto.response.ProductResponse;
-import ITProject.example.WebSelling.entity.Category;
-import ITProject.example.WebSelling.entity.Product;
-import ITProject.example.WebSelling.entity.ProductImage;
-import ITProject.example.WebSelling.entity.Specification;
+import ITProject.example.WebSelling.entity.*;
 import ITProject.example.WebSelling.exceptionHandler.AppException;
 import ITProject.example.WebSelling.exceptionHandler.ErrorCode;
 import ITProject.example.WebSelling.mapper.ProductMapper;
@@ -15,18 +12,14 @@ import ITProject.example.WebSelling.repository.ManufacturerRepository;
 import ITProject.example.WebSelling.repository.ProductImageRepository;
 import ITProject.example.WebSelling.repository.ProductRepository;
 import ITProject.example.WebSelling.service.intefaces.IProductService;
-import ITProject.example.WebSelling.utils.MessageKeys;
 import ITProject.example.WebSelling.components.LocalizationUtils;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -106,23 +99,30 @@ public class ProductService implements IProductService {
                 .collect(Collectors.toMap(Specification::getSpecKey, Function.identity()));
 
         // Lặp qua các Specification mới
-        for (Specification newSpec : specifications) {
-            // Nếu Specification đã tồn tại, cập nhật giá trị spec_value
-            Specification existingSpec = specMap.get(newSpec.getSpecKey());
-            if (existingSpec != null) {
-                existingSpec.setSpecValue(newSpec.getSpecValue());
-                if(newSpec.getBriefSpecValue()!=null)
-                    existingSpec.setBriefSpecValue(newSpec.getBriefSpecValue());
-            } else {
-                // Nếu Specification không tồn tại, thêm vào danh sách
-                product.getSpecifications().add(newSpec);
+        if (specifications != null) {
+            for (Specification newSpec : specifications) {
+                // Nếu Specification đã tồn tại, cập nhật giá trị spec_value
+                Specification existingSpec = specMap.get(newSpec.getSpecKey());
+                if (existingSpec != null) {
+                    existingSpec.setSpecValue(newSpec.getSpecValue());
+                    if (newSpec.getBriefSpecValue() != null)
+                        existingSpec.setBriefSpecValue(newSpec.getBriefSpecValue());
+                } else {
+                    // Nếu Specification không tồn tại, thêm vào danh sách
+                    product.getSpecifications().add(newSpec);
+                }
             }
+
         }
+
+
 //        if (isImageFile(thumbnail)) {
 //            // Lưu file và cập nhật thumbnail trong DTO
 //            String filename = storeFile(thumbnail); // Thay thế hàm này với code của bạn để lưu file
 //            product.setThumbnail(filename);
 //        }
+
+        product.setDetailDescriptions(productRequest.getDetailDescriptions());
 
 
         return productMapper.toProductResponse(productRepository.save(product));
@@ -203,6 +203,14 @@ public class ProductService implements IProductService {
         List<Product> products = productRepository.findByCategory(category);
         return products.stream().map(productMapper::toProductResponse).collect(Collectors.toList());
     }
+
+    @Override
+    public List<String> getImagesForProduct(Long productId) {
+        Product product = productRepository.findById(productId).orElseThrow(() -> new AppException(ErrorCode.INVALID_PRODUCT_ID));
+        return product.getProductImages().stream().map(ProductImage::getImageUrl).toList();
+
+    }
+
 
     public ProductImage createProductImage(Long productId, ProductImageRequest productImageDTO) {
         Product existingProduct = productRepository

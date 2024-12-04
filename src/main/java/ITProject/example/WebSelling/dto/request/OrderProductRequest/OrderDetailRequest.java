@@ -1,10 +1,5 @@
-package ITProject.example.WebSelling.dto.request;
+package ITProject.example.WebSelling.dto.request.OrderProductRequest;
 
-import ITProject.example.WebSelling.entity.Product;
-import jakarta.persistence.Column;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 

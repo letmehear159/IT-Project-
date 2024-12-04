@@ -1,8 +1,7 @@
 package ITProject.example.WebSelling.restController;
 
-import ITProject.example.WebSelling.dto.request.CustomerShippingRequest;
+import ITProject.example.WebSelling.dto.request.ShippingRequest.CustomerShippingRequest;
 import ITProject.example.WebSelling.entity.CustomerShipping;
-import ITProject.example.WebSelling.service.impl.CustomerShippingService;
 import ITProject.example.WebSelling.service.intefaces.ICustomerShippingService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

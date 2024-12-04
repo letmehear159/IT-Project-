@@ -1,10 +1,8 @@
 package ITProject.example.WebSelling.mapper;
 
-import ITProject.example.WebSelling.dto.request.ProductRequest;
-import ITProject.example.WebSelling.dto.request.UserRequest;
+import ITProject.example.WebSelling.dto.request.ProductRequets.ProductRequest;
 import ITProject.example.WebSelling.dto.response.ProductResponse;
 import ITProject.example.WebSelling.entity.Product;
-import ITProject.example.WebSelling.entity.User;
 import org.mapstruct.*;
 
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

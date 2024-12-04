@@ -1,6 +1,6 @@
 package ITProject.example.WebSelling.service.intefaces;
 
-import ITProject.example.WebSelling.dto.request.CustomerShippingRequest;
+import ITProject.example.WebSelling.dto.request.ShippingRequest.CustomerShippingRequest;
 import ITProject.example.WebSelling.entity.CustomerShipping;
 
 import java.util.List;

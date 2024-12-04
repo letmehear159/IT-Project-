@@ -4,6 +4,8 @@ CREATE TABLE `specifications`
     `product_id` bigint DEFAULT NULL,
     `spec_key`   varchar(255) NOT NULL,
     `spec_value` varchar(255) NOT NULL,
+    `brief_spec_value` varchar(255) NULLABLE,
+
     PRIMARY KEY (`spec_id`),
     KEY          `specifications_ibfk_1` (`product_id`),
     CONSTRAINT `specifications_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE

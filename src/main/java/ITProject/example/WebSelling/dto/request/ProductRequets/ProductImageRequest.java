@@ -1,4 +1,4 @@
-package ITProject.example.WebSelling.dto.request;
+package ITProject.example.WebSelling.dto.request.ProductRequets;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Min;

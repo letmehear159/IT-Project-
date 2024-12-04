@@ -37,6 +37,10 @@ public class Product extends BaseEntity {
     @JoinColumn(name = "product_id", nullable = false)
     Set<Specification> specifications = new HashSet<>();
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id", nullable = false)
+    Set<DetailDescription> detailDescriptions = new HashSet<>();
+
     @Column(name = "state")
     Integer status = 1;
 

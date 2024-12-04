@@ -1,6 +1,6 @@
 package ITProject.example.WebSelling.service.impl;
 
-import ITProject.example.WebSelling.dto.request.ManufacturerRequest;
+import ITProject.example.WebSelling.dto.request.ProductRequets.ManufacturerRequest;
 import ITProject.example.WebSelling.entity.Manufacturer;
 import ITProject.example.WebSelling.exceptionHandler.AppException;
 import ITProject.example.WebSelling.exceptionHandler.ErrorCode;

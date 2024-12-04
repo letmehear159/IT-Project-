@@ -1,6 +1,6 @@
 package ITProject.example.WebSelling.service.intefaces;
 
-import ITProject.example.WebSelling.dto.request.RoleRequest;
+import ITProject.example.WebSelling.dto.request.RolePermissionRequest.RoleRequest;
 import ITProject.example.WebSelling.entity.Role;
 
 import java.util.List;

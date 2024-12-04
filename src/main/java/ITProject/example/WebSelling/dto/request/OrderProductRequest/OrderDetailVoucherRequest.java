@@ -1,4 +1,4 @@
-package ITProject.example.WebSelling.dto.request;
+package ITProject.example.WebSelling.dto.request.OrderProductRequest;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;

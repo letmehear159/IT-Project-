@@ -1,9 +1,7 @@
 package ITProject.example.WebSelling.service.intefaces;
 
-import ITProject.example.WebSelling.dto.request.CategoryRequest;
-import ITProject.example.WebSelling.dto.request.ManufacturerRequest;
+import ITProject.example.WebSelling.dto.request.ProductRequets.CategoryRequest;
 import ITProject.example.WebSelling.entity.Category;
-import ITProject.example.WebSelling.entity.Manufacturer;
 
 import java.util.List;
 

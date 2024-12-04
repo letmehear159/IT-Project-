@@ -1,8 +1,7 @@
 package ITProject.example.WebSelling.service.impl;
 
-import ITProject.example.WebSelling.dto.request.CategoryRequest;
+import ITProject.example.WebSelling.dto.request.ProductRequets.CategoryRequest;
 import ITProject.example.WebSelling.entity.Category;
-import ITProject.example.WebSelling.entity.Manufacturer;
 import ITProject.example.WebSelling.exceptionHandler.AppException;
 import ITProject.example.WebSelling.exceptionHandler.ErrorCode;
 import ITProject.example.WebSelling.mapper.CategoryMapper;

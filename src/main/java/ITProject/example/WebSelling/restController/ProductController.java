@@ -1,9 +1,8 @@
 package ITProject.example.WebSelling.restController;
 
-import ITProject.example.WebSelling.dto.request.ProductRequest;
+import ITProject.example.WebSelling.dto.request.ProductRequets.ProductRequest;
 import ITProject.example.WebSelling.dto.response.ProductResponse;
 import ITProject.example.WebSelling.entity.ProductImage;
-import ITProject.example.WebSelling.service.impl.ProductService;
 import ITProject.example.WebSelling.service.intefaces.IProductService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

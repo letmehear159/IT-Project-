@@ -1,6 +1,6 @@
 package ITProject.example.WebSelling.service.impl;
 
-import ITProject.example.WebSelling.dto.request.PermissionRequest;
+import ITProject.example.WebSelling.dto.request.RolePermissionRequest.PermissionRequest;
 import ITProject.example.WebSelling.entity.Permission;
 import ITProject.example.WebSelling.mapper.PermissionMapper;
 import ITProject.example.WebSelling.repository.PermissionRepository;

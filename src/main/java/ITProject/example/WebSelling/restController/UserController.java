@@ -1,6 +1,6 @@
 package ITProject.example.WebSelling.restController;
 
-import ITProject.example.WebSelling.dto.request.UserRequest;
+import ITProject.example.WebSelling.dto.request.UserRequests.UserRequest;
 import ITProject.example.WebSelling.dto.response.UserResponse;
 import ITProject.example.WebSelling.service.intefaces.IUserService;
 import lombok.AccessLevel;

@@ -1,4 +1,4 @@
-package ITProject.example.WebSelling.dto.request;
+package ITProject.example.WebSelling.dto.request.ProductRequets;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
@@ -9,11 +9,12 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
-public class CategoryRequest {
-
+public class ManufacturerRequest {
     @JsonProperty("name")
-    String categoryName;
+    String manufacturerName;
 
     @JsonProperty("description")
-    String categoryDescription;
+    String manufacturerDescription;
+
+
 }

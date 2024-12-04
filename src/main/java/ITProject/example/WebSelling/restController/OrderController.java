@@ -1,6 +1,6 @@
 package ITProject.example.WebSelling.restController;
 
-import ITProject.example.WebSelling.dto.request.OrderRequest;
+import ITProject.example.WebSelling.dto.request.OrderProductRequest.OrderRequest;
 import ITProject.example.WebSelling.entity.Order;
 import ITProject.example.WebSelling.service.intefaces.IOrderService;
 import lombok.AccessLevel;

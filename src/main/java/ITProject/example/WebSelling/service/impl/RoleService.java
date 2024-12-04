@@ -1,6 +1,6 @@
 package ITProject.example.WebSelling.service.impl;
 
-import ITProject.example.WebSelling.dto.request.RoleRequest;
+import ITProject.example.WebSelling.dto.request.RolePermissionRequest.RoleRequest;
 import ITProject.example.WebSelling.entity.Permission;
 import ITProject.example.WebSelling.entity.Role;
 import ITProject.example.WebSelling.mapper.PermissionMapper;
@@ -34,10 +34,14 @@ public class RoleService implements IRoleService {
 
     public Role createRole(RoleRequest roleRequest) {
         Role role = roleMapper.toRole(roleRequest);
+        List<Permission> permissions = null;
 
-        var permissions = permissionRepository.findAllById(roleRequest.getPermissions());
+        if (roleRequest.getPermissions() != null) {
+            permissions = permissionRepository.findAllById(roleRequest.getPermissions());
+        }
 
-        Set<Permission> permissionSet = new HashSet<>(permissions);
+
+        Set<Permission> permissionSet = new HashSet<>(permissions == null ? new HashSet<>() : permissions);
 
         role.setPermissions(permissionSet);
 

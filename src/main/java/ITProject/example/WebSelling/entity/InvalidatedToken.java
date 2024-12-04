@@ -2,6 +2,7 @@ package ITProject.example.WebSelling.entity;
 
 
 import java.time.LocalDate;
+import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -19,6 +20,6 @@ public class InvalidatedToken {
     @Id
     String tokenId;
 
-    LocalDate expiryDate;
+    Date expiryDate;
 }
 

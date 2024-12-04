@@ -1,8 +1,7 @@
 package ITProject.example.WebSelling.restController;
 
-import ITProject.example.WebSelling.dto.request.ManufacturerRequest;
+import ITProject.example.WebSelling.dto.request.ProductRequets.ManufacturerRequest;
 import ITProject.example.WebSelling.entity.Manufacturer;
-import ITProject.example.WebSelling.service.impl.ManufacturerService;
 import ITProject.example.WebSelling.service.intefaces.IManufacturerService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

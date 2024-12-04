@@ -1,9 +1,8 @@
 package ITProject.example.WebSelling.restController;
 
-import ITProject.example.WebSelling.dto.request.PermissionRequest;
+import ITProject.example.WebSelling.dto.request.RolePermissionRequest.PermissionRequest;
 import ITProject.example.WebSelling.entity.Permission;
 import ITProject.example.WebSelling.response.APIResponse;
-import ITProject.example.WebSelling.service.impl.PermissionService;
 import ITProject.example.WebSelling.service.intefaces.IPermissionService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

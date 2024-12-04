@@ -1,4 +1,4 @@
-package ITProject.example.WebSelling.dto.request;
+package ITProject.example.WebSelling.dto.request.ShippingRequest;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -8,8 +8,9 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
-public class PermissionRequest {
-    String permissionId;
+public class ShippingMethodRequest {
+
+    String shippingName;
 
     String description;
 }

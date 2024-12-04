@@ -1,9 +1,7 @@
 package ITProject.example.WebSelling.mapper;
 
-import ITProject.example.WebSelling.dto.request.CategoryRequest;
-import ITProject.example.WebSelling.dto.request.OrderDetailRequest;
+import ITProject.example.WebSelling.dto.request.OrderProductRequest.OrderDetailRequest;
 import ITProject.example.WebSelling.dto.response.OrderDetailResponse;
-import ITProject.example.WebSelling.entity.Category;
 import ITProject.example.WebSelling.entity.OrderDetail;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;

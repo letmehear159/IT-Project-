@@ -1,11 +1,7 @@
 package ITProject.example.WebSelling.restController;
 
-import ITProject.example.WebSelling.dto.request.CategoryRequest;
-import ITProject.example.WebSelling.dto.request.ManufacturerRequest;
+import ITProject.example.WebSelling.dto.request.ProductRequets.CategoryRequest;
 import ITProject.example.WebSelling.entity.Category;
-import ITProject.example.WebSelling.entity.Manufacturer;
-import ITProject.example.WebSelling.service.impl.CategoryService;
-import ITProject.example.WebSelling.service.impl.ManufacturerService;
 import ITProject.example.WebSelling.service.intefaces.ICategoryService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

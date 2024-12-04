@@ -1,9 +1,7 @@
 package ITProject.example.WebSelling.mapper;
 
-import ITProject.example.WebSelling.dto.request.ManufacturerRequest;
-import ITProject.example.WebSelling.dto.request.UserRequest;
+import ITProject.example.WebSelling.dto.request.ProductRequets.ManufacturerRequest;
 import ITProject.example.WebSelling.entity.Manufacturer;
-import ITProject.example.WebSelling.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;

@@ -1,6 +1,6 @@
 package ITProject.example.WebSelling.service.impl;
 
-import ITProject.example.WebSelling.dto.request.UserRequest;
+import ITProject.example.WebSelling.dto.request.UserRequests.UserRequest;
 import ITProject.example.WebSelling.dto.response.UserResponse;
 import ITProject.example.WebSelling.entity.ShoppingCart;
 import ITProject.example.WebSelling.entity.User;

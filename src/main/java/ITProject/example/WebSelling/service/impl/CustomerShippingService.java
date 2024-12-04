@@ -1,6 +1,6 @@
 package ITProject.example.WebSelling.service.impl;
 
-import ITProject.example.WebSelling.dto.request.CustomerShippingRequest;
+import ITProject.example.WebSelling.dto.request.ShippingRequest.CustomerShippingRequest;
 import ITProject.example.WebSelling.entity.CustomerShipping;
 import ITProject.example.WebSelling.exceptionHandler.AppException;
 import ITProject.example.WebSelling.exceptionHandler.ErrorCode;

@@ -1,4 +1,4 @@
-package ITProject.example.WebSelling.dto.request;//package practice.example.DatabaseConnection.dto.request;
+package ITProject.example.WebSelling.dto.request.RolePermissionRequest;//package practice.example.DatabaseConnection.dto.request;
 
 import java.util.Set;
 

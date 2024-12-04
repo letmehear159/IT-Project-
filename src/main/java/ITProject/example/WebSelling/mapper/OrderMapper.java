@@ -1,6 +1,6 @@
 package ITProject.example.WebSelling.mapper;
 
-import ITProject.example.WebSelling.dto.request.OrderRequest;
+import ITProject.example.WebSelling.dto.request.OrderProductRequest.OrderRequest;
 import ITProject.example.WebSelling.entity.Order;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValuePropertyMappingStrategy;

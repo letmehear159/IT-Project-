@@ -1,8 +1,7 @@
 package ITProject.example.WebSelling.service.intefaces;
 
-import ITProject.example.WebSelling.dto.request.ProductRequest;
+import ITProject.example.WebSelling.dto.request.ProductRequets.ProductRequest;
 import ITProject.example.WebSelling.dto.response.ProductResponse;
-import ITProject.example.WebSelling.entity.Product;
 import ITProject.example.WebSelling.entity.ProductImage;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,5 +23,7 @@ public interface IProductService {
     List<ProductImage> uploadImages(Long productId, List<MultipartFile> files) throws IOException;
 
     List<ProductResponse> getAllProductsByCategory(String category);
+
+    List<String> getImagesForProduct(Long productId);
 
 }

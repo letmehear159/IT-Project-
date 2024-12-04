@@ -8,3 +8,8 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+jwt:
+  secret-key: "eyJhbGciOiJIUzUxMiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTcyNzAxMTg5NywiaWF0IjoxNzI3MDExODk3fQ.15xW1BIWMrdbhZy8Fws-l0_3QAPgyhhWDfiBt06AQ9fcxsxXzhT0N6obI2uBKlLgq58YTbjCWYodTB-H4yl2RA"
+  valid-Duration: 84000 #in seconds
+  refreshable-Duration: 84000 #in seconds

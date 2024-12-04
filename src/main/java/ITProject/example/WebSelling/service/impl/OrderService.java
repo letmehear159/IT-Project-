@@ -1,6 +1,6 @@
 package ITProject.example.WebSelling.service.impl;
 
-import ITProject.example.WebSelling.dto.request.OrderRequest;
+import ITProject.example.WebSelling.dto.request.OrderProductRequest.OrderRequest;
 import ITProject.example.WebSelling.entity.Order;
 import ITProject.example.WebSelling.entity.OrderDetail;
 import ITProject.example.WebSelling.entity.User;
@@ -17,7 +17,6 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @RequiredArgsConstructor

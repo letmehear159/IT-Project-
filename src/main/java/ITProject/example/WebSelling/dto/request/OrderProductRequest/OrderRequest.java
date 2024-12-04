@@ -1,14 +1,7 @@
-package ITProject.example.WebSelling.dto.request;
+package ITProject.example.WebSelling.dto.request.OrderProductRequest;
 
-import ITProject.example.WebSelling.entity.OrderDetail;
-import ITProject.example.WebSelling.entity.Voucher;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.PrePersist;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Data//toString

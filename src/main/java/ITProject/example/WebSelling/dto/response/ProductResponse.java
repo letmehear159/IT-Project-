@@ -1,8 +1,6 @@
 package ITProject.example.WebSelling.dto.response;
 
-import ITProject.example.WebSelling.entity.Category;
-import ITProject.example.WebSelling.entity.Manufacturer;
-import ITProject.example.WebSelling.entity.Specification;
+import ITProject.example.WebSelling.entity.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -28,11 +26,14 @@ public class ProductResponse {
 
     Manufacturer manufacturer;
 
-//    Map<String, String> specifications;
 
     Set<Specification> specifications;
+
+    Set<DetailDescription> detailDescriptions;
 
     String description;
 
     String thumbnail;
+
+    List<ProductImage> productImages;
 }

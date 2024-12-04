@@ -1,6 +1,6 @@
 package ITProject.example.WebSelling.mapper;
 
-import ITProject.example.WebSelling.dto.request.PermissionRequest;
+import ITProject.example.WebSelling.dto.request.RolePermissionRequest.PermissionRequest;
 import ITProject.example.WebSelling.entity.Permission;
 import org.mapstruct.Mapper;
 

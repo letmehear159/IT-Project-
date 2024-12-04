@@ -1,6 +1,6 @@
 package ITProject.example.WebSelling.mapper;
 
-import ITProject.example.WebSelling.dto.request.ShippingMethodRequest;
+import ITProject.example.WebSelling.dto.request.ShippingRequest.ShippingMethodRequest;
 import ITProject.example.WebSelling.entity.ShippingMethod;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;

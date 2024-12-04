@@ -1,7 +1,7 @@
 package ITProject.example.WebSelling.service.impl;
 
-import ITProject.example.WebSelling.dto.request.OrderDetailRequest;
-import ITProject.example.WebSelling.dto.request.OrderDetailVoucherRequest;
+import ITProject.example.WebSelling.dto.request.OrderProductRequest.OrderDetailRequest;
+import ITProject.example.WebSelling.dto.request.OrderProductRequest.OrderDetailVoucherRequest;
 import ITProject.example.WebSelling.dto.response.OrderDetailResponse;
 import ITProject.example.WebSelling.entity.OrderDetail;
 import ITProject.example.WebSelling.entity.Voucher;
@@ -13,7 +13,6 @@ import ITProject.example.WebSelling.repository.ProductRepository;
 import ITProject.example.WebSelling.repository.ShoppingCartRepository;
 import ITProject.example.WebSelling.repository.VoucherRepository;
 import ITProject.example.WebSelling.service.intefaces.IOrderDetailService;
-import jakarta.servlet.http.HttpSession;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
