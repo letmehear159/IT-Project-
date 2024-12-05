@@ -26,10 +26,10 @@ import java.text.ParseException;
 public class AuthenticationController {
     AuthenticationService authenticationService;
 
-//    @RequestMapping(method = RequestMethod.OPTIONS, value = "/login")
-//    public ResponseEntity<?> handleOptionsRequest() {
-//        return ResponseEntity.ok().build();
-//    }
+    @RequestMapping(method = RequestMethod.OPTIONS, value = "/login")
+    public ResponseEntity<?> handleOptionsRequest() {
+        return ResponseEntity.ok().build();
+    }
 
     @PostMapping(value = "/login")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest authenticationRequest)

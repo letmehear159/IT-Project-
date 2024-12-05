@@ -4,7 +4,7 @@ import ITProject.example.WebSelling.entity.User;
 import ITProject.example.WebSelling.enums.ROLE;
 import ITProject.example.WebSelling.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.ApplicationRunner; 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

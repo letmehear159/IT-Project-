@@ -37,7 +37,7 @@ public class OrderService implements IOrderService {
     public Order createOrder(OrderRequest orderRequest) {
         Order order = orderMapper.toOrder(orderRequest);
 
-        User user = userRepository.findById(orderRequest.getUserId()).orElseThrow(
+        User user = userRepository.findByUsername(orderRequest.getUsername()).orElseThrow(
                 () -> new AppException(ErrorCode.INVALID_USERID)
         );
 

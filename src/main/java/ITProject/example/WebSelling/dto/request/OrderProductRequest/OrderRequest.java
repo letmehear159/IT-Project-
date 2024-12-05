@@ -12,7 +12,7 @@ import java.util.List;
 @Builder
 //Phần quan trọng nhất, để làm sau
 public class OrderRequest {
-    Long userId;
+    String username;
 
     String customerName;
 
