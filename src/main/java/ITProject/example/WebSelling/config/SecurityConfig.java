@@ -22,6 +22,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     protected final String[] PUBLIC_ENDPOINTS = {"/users/", "/auth/**", "/auth/refresh"};
+    protected final String[] TESTING = {"/**"};
 
     CustomJwtDecoder customJwtDecoder;
 
@@ -30,7 +31,9 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(authorizeRequests -> authorizeRequests
                 //                                .requestMatchers(HttpMethod.GET, "/users/").hasRole(ROLE.ADMIN.name())
-                .requestMatchers(HttpMethod.POST, PUBLIC_ENDPOINTS)
+                .requestMatchers(HttpMethod.POST, TESTING)
+                .permitAll()
+                .requestMatchers(HttpMethod.GET, TESTING)
                 .permitAll()
                 .anyRequest()
                 .authenticated());
