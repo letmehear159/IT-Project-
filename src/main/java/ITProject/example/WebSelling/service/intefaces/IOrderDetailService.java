@@ -19,4 +19,6 @@ public interface IOrderDetailService {
 
     List<OrderDetailResponse> updateOrderDetails(List<OrderDetailVoucherRequest> orderDetailVoucherRequests);
 
+    List<OrderDetailResponse> getAllOrderDetailsCartId(Long orderId);
+
 }

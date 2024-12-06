@@ -45,4 +45,9 @@ public class OrderDetailController {
         orderDetailService.deleteOrderDetail(id);
     }
 
+    @GetMapping("/cart/{cartId}")
+    public ResponseEntity<List<OrderDetailResponse>> getOrderDetailsByCartId(@PathVariable Long cartId) {
+        return ResponseEntity.ok(orderDetailService.getAllOrderDetailsCartId(cartId));
+    }
+
 }

@@ -2,6 +2,7 @@ package ITProject.example.WebSelling.dto.response;
 
 import ITProject.example.WebSelling.entity.Order;
 import ITProject.example.WebSelling.entity.Role;
+import ITProject.example.WebSelling.entity.ShoppingCart;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -36,5 +37,7 @@ public class UserResponse extends BaseResponse {
 
     @JsonProperty("updated_at")
     LocalDateTime dateModified;
+
+    ShoppingCart shoppingCart;
 
 }

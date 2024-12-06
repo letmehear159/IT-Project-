@@ -1,6 +1,7 @@
 package ITProject.example.WebSelling.dto.response;
 
 import ITProject.example.WebSelling.entity.Product;
+import ITProject.example.WebSelling.entity.ShoppingCart;
 import jakarta.persistence.Column;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -21,4 +22,6 @@ public class OrderDetailResponse {
     int quantity;
 
     float totalPrice;
+
+    ShoppingCart shoppingCart;
 }

@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -142,6 +143,17 @@ public class OrderDetailService implements IOrderDetailService {
             responses.add(updateOrderDetail(orderDetailRequest));
         });
 
+        return responses;
+    }
+
+    @Override
+    public List<OrderDetailResponse> getAllOrderDetailsCartId(Long shoppingCartId) {
+        List<OrderDetailResponse> responses = new ArrayList<>();
+        var orderDetails = orderDetailRepository
+                .findByShoppingCart(shoppingCartRepository.findById(shoppingCartId).orElseThrow(
+                        () -> new AppException(ErrorCode.INVALID_SHOPPINGCART_ID)));
+
+        responses = orderDetails.stream().map(orderDetailMapper::toOrderDetailResponse).toList();
         return responses;
     }
 

@@ -14,6 +14,7 @@ import ITProject.example.WebSelling.service.intefaces.IOrderService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -86,5 +87,11 @@ public class OrderService implements IOrderService {
         return orderRepository.save(order);
 
 
+    }
+
+    @Override
+    public List<Order> getOrdersByUsername(String username) {
+        List<Order> orders = orderRepository.findByUser(userRepository.findByUsername(username).orElseThrow());
+        return orders;
     }
 }
