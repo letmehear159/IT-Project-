@@ -44,4 +44,9 @@ public class CustomerShippingController {
     public ResponseEntity<CustomerShipping> update(@PathVariable Long id, @RequestBody CustomerShippingRequest request) {
         return ResponseEntity.ok(customerShippingService.updateCustomerShipping(request, id));
     }
+
+    @GetMapping("/user/{username}")
+    public ResponseEntity<List<CustomerShipping>> getShippingAddressList(@PathVariable String username) {
+        return  ResponseEntity.ok(customerShippingService.getCustomerShippingByUsername(username));
+    }
 }

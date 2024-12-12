@@ -18,5 +18,5 @@ public class CustomerShippingRequest {
 
     String detailAddress;
 
-    Long userId;
+    String username;
 }

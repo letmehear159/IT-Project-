@@ -31,11 +31,12 @@ public class CustomerShippingService implements ICustomerShippingService {
         );
     }
 
+
     @Override
     public CustomerShipping saveCustomerShipping(CustomerShippingRequest customerShippingRequest) {
         var customerShipping = customerShippingMapper.toCustomerShipping(customerShippingRequest);
 
-        var user = userRepository.findById(customerShippingRequest.getUserId()).orElseThrow(
+        var user = userRepository.findByUsername(customerShippingRequest.getUsername()).orElseThrow(
                 () -> new AppException(ErrorCode.INVALID_CUSTOMER_SHIPPING_ID)
         );
 
@@ -73,5 +74,13 @@ public class CustomerShippingService implements ICustomerShippingService {
 
         return customerShippingRepository.save(customerShipping);
 
+    }
+
+    @Override
+    public List<CustomerShipping> getCustomerShippingByUsername(String username) {
+
+        var user = userRepository.findByUsername(username).orElseThrow(() -> new AppException(ErrorCode.USERNAME_INVALID));
+
+        return user.getCustomerShipping();
     }
 }

@@ -17,4 +17,5 @@ public interface ICustomerShippingService {
     CustomerShipping updateCustomerShipping(CustomerShippingRequest customerShippingRequest, Long userId);
 
 
+    List<CustomerShipping> getCustomerShippingByUsername(String username);
 }

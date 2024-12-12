@@ -28,5 +28,4 @@ public class OrderController {
     public ResponseEntity<Order> getOrder(@PathVariable String username) {
         return ResponseEntity.ok(orderService.getOrdersByUsername(username).getFirst());
     }
-
 }
