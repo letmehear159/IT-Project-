@@ -1,5 +1,6 @@
 package ITProject.example.WebSelling.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -32,5 +33,8 @@ public class OrderDetail {
     @JoinColumn(name = "cart_id")
     ShoppingCart shoppingCart;
 
-
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    @JsonBackReference
+    Order order;
 }

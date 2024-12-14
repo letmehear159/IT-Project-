@@ -72,6 +72,9 @@ public class OrderService implements IOrderService {
                         () -> new AppException(ErrorCode.INVALID_ORDER_ID)
                 )).toList();
 
+//        Order orderFinal = orderRepository.save(order);
+
+
         order.setOrderDetails(orderDetails);
 
         //total price
@@ -84,7 +87,15 @@ public class OrderService implements IOrderService {
 
         order.setTotalPrice(totalPrice);
 
-        return orderRepository.save(order);
+        Order orderFinal = orderRepository.save(order);
+
+        orderDetails.forEach(orderDetail -> {
+            orderDetail.setOrder(orderFinal);
+            orderDetailRepository.save(orderDetail);
+
+        });
+
+        return orderFinal;
 
 
     }
@@ -92,6 +103,9 @@ public class OrderService implements IOrderService {
     @Override
     public List<Order> getOrdersByUsername(String username) {
         List<Order> orders = orderRepository.findByUser(userRepository.findByUsername(username).orElseThrow());
+
+        System.out.println("Hello");
+
         return orders;
     }
 }

@@ -63,8 +63,8 @@ public class Order {
         orderDate = LocalDate.now();
     }
 
-    @OneToMany
-    @JoinColumn(name = "order_id", nullable = false)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     List<OrderDetail> orderDetails;
 
     @ManyToOne

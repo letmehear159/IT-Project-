@@ -8,10 +8,7 @@ import ITProject.example.WebSelling.entity.Voucher;
 import ITProject.example.WebSelling.exceptionHandler.AppException;
 import ITProject.example.WebSelling.exceptionHandler.ErrorCode;
 import ITProject.example.WebSelling.mapper.OrderDetailMapper;
-import ITProject.example.WebSelling.repository.OrderDetailRepository;
-import ITProject.example.WebSelling.repository.ProductRepository;
-import ITProject.example.WebSelling.repository.ShoppingCartRepository;
-import ITProject.example.WebSelling.repository.VoucherRepository;
+import ITProject.example.WebSelling.repository.*;
 import ITProject.example.WebSelling.service.intefaces.IOrderDetailService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +33,7 @@ public class OrderDetailService implements IOrderDetailService {
 
     VoucherRepository voucherRepository;
 
+    OrderRepository orderRepository;
 
     @Override
     public OrderDetailResponse getOrderDetail(Long orderDetailId) {
@@ -149,10 +147,17 @@ public class OrderDetailService implements IOrderDetailService {
     @Override
     public List<OrderDetailResponse> getAllOrderDetailsCartId(Long shoppingCartId) {
         List<OrderDetailResponse> responses = new ArrayList<>();
+
+
+
         var orderDetails = orderDetailRepository
                 .findByShoppingCart(shoppingCartRepository.findById(shoppingCartId).orElseThrow(
                         () -> new AppException(ErrorCode.INVALID_SHOPPINGCART_ID)));
 
+//        orderDetails.forEach(orderDetail -> {
+//            if()
+//        });
+//
         responses = orderDetails.stream().map(orderDetailMapper::toOrderDetailResponse).toList();
         return responses;
     }
